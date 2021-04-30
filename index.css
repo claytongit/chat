@@ -1,0 +1,149 @@
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f3f0f0; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.container-fluid{
+	margin: 0;
+	background-color: #0c9c0c;
+}
+
+/*----------------------------------------- WRAPPER ---------------------------------------------------------------*/
+
+.wrapper{
+	width: 50%;	
+	margin: 0 auto;
+}
+
+.namePerfil{
+	color: #FFF;
+}
+
+.namePerfil:hover{
+	color: #FFF;
+}
+
+.branding-right-pic{
+	margin: 5px 0 5px 0;
+	min-height: 50px;
+	background-color: #0c9c0c;
+}
+
+.formPos{
+	margin-top: 6px;
+}
+
+.bg{
+	background: url("img/whatsapp2.jpg");
+	min-height: 80vh;
+	opacity: 0.7;
+	margin: 0 auto;
+}
+
+.bgChild{
+	background: transparent;
+	height: 93vh;
+	overflow-y: scroll;
+	width: 100%;
+	margin: auto;
+	padding: 30px 0;
+}
+
+.container-date{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.date{
+	background-color: rgba(225,245,254,0.92);
+	padding: 5px 12px;
+	border-radius: 7.5px;
+}
+
+.date > p{
+	margin: 0;
+}
+
+.dis{
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+	overflow: hidden;
+	width: 90%;
+	margin: auto;
+	background: transparent;
+}
+
+/* Janela da conversa */
+.panel{
+	display: inline-block;
+	margin: 10px;
+	max-width: 400px;
+}
+
+.panel-body {
+    padding: 5px 15px;
+    padding-top: 0;
+}
+
+.panel-body > p{
+	font-size: .9em;
+}
+
+.chat-image > img{
+	border-radius: 10px;
+	margin-bottom: 15px;
+	width: 200px;
+}
+
+.chat-pos{
+	width: 100%;
+}
+
+.right-bottom-type{
+	margin: 13px 0  0 0 ;
+}
+
+.check{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.check > small{
+	margin: 0 5px;
+}
+
+.tip-right{
+	margin-top: -12px;
+	margin-left: 100%;	
+}
+
+.tip-left{
+	margin-top: -12px;
+	margin-left: -12px;	
+}
+/*-----------------------------------------------------MEDIA QUERIES-----------------------------------------------------*/
+
+@media screen and (max-width: 770px){
+	.wrap-mob-nav{
+		display: none;
+	}
+	.wrapper{
+		width: 100%;
+		z-index: 4;
+	}
+	.panel {
+		max-width: 300px;
+	}
+}

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+      <link rel="stylesheet" type="text/css" href="index.css">
+      <title>Delivery WhatsApp</title>
+    </head>
+
+  <body>
+   
+    <!-- Perfil -->
+   <div class="wrapper">
+      <div class="container-fluid">
+        <nav class="right-nav">
+          <div class="branding-right-pic">
+            <a href="#">
+              <img src="https://png.pngtree.com/png-clipart/20190924/original/pngtree-food-delivery--logo-design-template-png-image_4859990.jpg" class="rounded-circle float-left" alt="Cinque Terre" width="42px" style="margin: 5.5px 0 0 13px;">
+            </a>
+            <a class="namePerfil" href="#"><h4 style="line-height: 0px;margin: 28px 0 0 65px;position: absolute;">Delivery WhatsApp</h4></a>
+          </div>
+        </nav>
+      </div>
+   
+      <!--- Conversa -->
+      <div class="bg" >
+
+        <div class="container-fluid bgChild">
+
+          <div class="container-date">
+            <div class="date">
+              <!--- Data atual -->
+              <p class="nowDate"></p>
+            </div>
+          </div>
+
+          <div class="root"></div>
+          <div id="setTime"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script>
+
+        var data = new Date(),
+            dia  = data.getDate().toString().padStart(2, '0'),
+            mes  = (data.getMonth()+1).toString().padStart(2, '0'),
+            ano  = data.getFullYear();
+
+        document.querySelector('.nowDate').innerHTML = dia+"/"+mes+"/"+ano; 
+
+        fetch('json.json')
+        .then(response => response.json())
+        .then(result => {
+          result.forEach(function(element) {
+            document.querySelector('.root').innerHTML += `
+              <div class="container chat-pos">
+                <div class="panel panel-default">
+                  <img class="tip-left" src="img/left.png" alt="">
+                  <div class="panel-body">
+                      <!--- Mensagem recebida -->
+                      <p class="messagem">${element.chat}</p>
+                      <div class="check">
+                        <small class="float-right nowHourOne" style="line-height: 0;" >${data.getHours() + ":" + data.getMinutes().toString().padStart(2, '0')}</small>
+                        <img src="img/check.png" alt="">
+                      </div>
+                  </div> 
+                </div>
+              </div> 
+              
+              ${ element.img 
+                ? `
+                <div class="container chat-pos">
+                  <div class="panel panel-default  float-right">
+                    <img class="tip-left" src="img/left.png" alt="">
+                    <div class="panel-body">
+                        <!--- Mensagem recebida -->
+                        <div class="chat-image">
+                          <img src="${element.img}">
+                        </div>
+                        <p class="messagem">${element.robot}</p>
+                        <div class="check">
+                          <small class="float-right nowHourOne" style="line-height: 0;" >11:00</small>
+                          <img src="img/check.png" alt="">
+                        </div>
+                    </div> 
+                  </div>
+                </div>
+                ` 
+                : `
+                <div class="container chat-pos">
+                  <div class="panel panel-default  float-right">
+                    <img class="tip-left" src="img/left.png" alt="">
+                    <div class="panel-body">
+                        <!--- Mensagem recebida -->
+                        <p class="messagem">${element.robot}</p>
+                        <div class="check">
+                          <small class="float-right nowHourOne" style="line-height: 0;" >11:00</small>
+                          <img src="img/check.png" alt="">
+                        </div>
+                    </div> 
+                  </div>
+                </div>
+                ` 
+              }
+            `
+          });   
+        })
+        .catch(function(err){
+          console.error(err);
+        });
+          
+    </script>
+
+  </body>
+</html>
